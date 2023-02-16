@@ -1,44 +1,26 @@
 import './App.css'
-import { NestedCheckboxData, NestedCheckbox } from './NestedCheckbox';
+import { NestedCheckbox } from './NestedCheckbox'
+import { NestedCheckboxData } from './types'
+import { generateData } from './util'
 
 const dataOne: NestedCheckboxData = {
   foo: true,
   bar: false,
-  group1: {
-    level2: true,
-    level2option2: false,
-    nested: {
-      option: false
+  foobar: {
+    hello: true,
+    hi: false,
+    greetings: {
+      tom: false
     } as NestedCheckboxData
   } as NestedCheckboxData
 }
 
-const dataTwo: NestedCheckboxData = {
-  foo: true,
-  bar: {
-    test: {
-      hello: {
-        world: false,
-        hi: true,
-      } as NestedCheckboxData
-    } as NestedCheckboxData,
-    testTwo: false,
-  },
-  group1: {
-    level2: true,
-    level2option2: false,
-    nested: {
-      option: false
-    } as NestedCheckboxData
-  } as NestedCheckboxData
-}
-
-// Generate a big data object for testing and optimization
+const data = generateData(5, 2);
 
 function App() {
   return (
     <div className="App">
-      <NestedCheckbox data={dataTwo} />
+      <NestedCheckbox data={data} />
     </div>
   )
 }
